@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API-CEP</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <center>
+        <h1>API - CEP</h1>
+        <fieldset class="field" >
+            <legend class="txt1">Endereço</legend>
+            <label class="label1" for="cep">CEP:</label>
+            <input class="input1" type="text" id="cep" autocomplete="off">
+            
+            <label class="label1" for="rua">Rua:</label>
+            <input class="input2" type="text" id="rua" readonly>
+            
+            <label class="label1" for="numero">Número:</label>
+            <input class="input1" type="text" id="numero">
+            
+            <label class="label1" for="bairro">Bairro</label>
+            <input class="input2" type="text" id="bairro" readonly>
+            
+            <label class="label1" for="cidade">Cidade:</label>
+            <input class="input2" type="text" id="cidade" readonly>
+            
+            <label class="label1" for="estado">Estado:</label>
+            <input class="input2" type="text" id="estado" readonly>
+    <br>
+    </center>
+   
+</body>
+
+
+
+
+<script>
+    //preencher os inputs com arrow functions
+    const preencherFormulario = (endereco) => {
+    document.getElementById("rua").value = endereco.logradouro;
+    document.getElementById("bairro").value = endereco.bairro;
+    document.getElementById("cidade").value = endereco.localidade;
+    document.getElementById("estado").value = endereco.uf;
+}
+//autopreenchimento
+const cepValido = (cep) => {
+    if (cep.length == 8) {
+        return true;
+    } else {
+        return false;
+    }
+}
+//buscar API
+//Com async e await podemos trabalhar com código assíncrono em um estilo mais parecido com o bom e velho código síncrono.
+const pesquisarCep = async () => {
+    const cep = document.getElementById("cep").value;
+    const url = `http://viacep.com.br/ws/${cep}/json/`;
+    if (cepValido(cep)) {
+        const dados = await fetch(url);
+        const endereco = await dados.json();
+            preencherFormulario(endereco);
+        }
+}
+document.getElementById("cep").addEventListener("focusout", pesquisarCep);
+</script>
+</html>

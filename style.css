@@ -1,0 +1,57 @@
+body{
+    background-color: rgb(24, 24, 24);
+}
+h1{
+    font-family: Poppins;
+    color: white;
+    font-size: 50px;
+}
+
+.txt1{
+    font-family: Poppins;
+    color: white;
+    font-size: 40px;
+}
+
+.label1{
+    color: white;
+    font-size: 24px;
+    font-family: Poppins;
+}
+
+.input1{
+    display: flex;
+    text-align: center;
+    font-family: Poppins;
+    width: 355px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    background-color: rgb(56, 56, 56);
+    color: white;
+    font-size: 20px;
+}
+
+.input2{
+    display: flex;
+    text-align: center;
+    font-family: Poppins;
+    width: 355px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    background-color: rgb(41, 41, 41);
+    cursor: default;
+    color: rgb(212, 212, 212);
+    font-size: 21px;
+}
+
+.field{
+    width: 500px;
+    background-color: rgb(34, 34, 34);
+    border-radius: 10px;
+    border: none;
+    border: 1px solid rgb(95, 95, 95);
+}
